@@ -1,0 +1,41 @@
+<div class="row g-0">
+	<div class="col-md-4" style="padding-top: 5%;">
+		<div style="height: 10%"></div>
+		<div class="row card-img" style="margin-top: auto;">
+			<img src="/media/{{product.image}}" class="img-fluid rounded-start zoom" alt="...">
+		</div>
+		<div class="row"></div>
+	</div>
+	<div class="col-md-8">
+		<div class="card-body">
+			<div class="card-title" ><h4><strong>{{product.company}} {{product.name}}</strong></h4></div>
+			{% if product.stock == 0 %}
+			<p style="color: red">*Sorry! Product is currently unavailable!</p>
+			{% elif product.stock < 20 %}
+			<p style="color: red">*Hurry! Only few left in stock!</p>
+			{% endif %}
+			<div class="card-text" style="height: 20rem;overflow-y: scroll; border-top: 1px lightgrey solid; border-bottom: 1px lightgrey solid;">
+
+				{% include "pages/components/desc_table.html" %}
+				
+			</div>
+			<p class="card-text">
+				{% if product.stock > 0 %}
+				<form  style="display: inline;">
+					<table style="margin-bottom: 1rem;">
+						<tr>
+							<th style="width: 30%">Buy quantity:</th>
+							{% if product.stock > 5 %}
+							<td><input style="width: 3em" name="qty" type="number" id="qty" value="1" min="1" max="5"></td>
+							{% else %}
+							<td><input style="width: 3em" name="qty" type="number" id="qty" value="1" min="1" max="{{ product.stock }}"></td>
+							{% endif %}
+						</tr>
+					</table>
+					<button onclick="cart({{product.id}})" class="btn" style="margin-right: 2em;" type="button"><i class="material-icons right">add_shopping_cart</i>Add to Cart</button>
+				</form>
+				{% endif %}
+			</p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="width: 80%; margin: auto;">	
+	<div class="card" style="width: 100%; margin: 5em 0em; padding: 0; overflow-x: scroll;" >
+				<div class="card-body" style="margin: 0; width: 100%; text-align: center;">
+					<!-- <p class="card-text" style="padding: 0;"> -->
+					{% if data %}
+						
+						{% include "pages/components/cart_table.html" %}
+
+					{% else %}
+
+					<h2 style="align-self: center;">Your Cart is currently empty!</h2>
+					<br>
+					<a href="/products/all" class="btn"> Continue Shopping! </a>
+
+					{% endif %}
+				</div>
+	<div style="min-height: 5em"></div>
+</div>
+</div>
+
+{% endblock %}

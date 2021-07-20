@@ -1,0 +1,20 @@
+<div class="col-sm-6 col-md-4 col-lg-3" style="margin-top: 4%;">
+	<div class="card h-100 shadow" style="border-radius: 1rem;">
+
+		<img src="/media/{{product.image}}" class="card-img-top" width="30px" style="border-bottom: 2px solid #dae0eb; margin-bottom: 1px">	
+		
+		<div class="card-body" style="padding-top: 0.5em;">
+			<h6 class="card-title"><strong>{{product.company}} {{product.name}}</strong></h6>
+			<p class="card-text"><b>Price:</b> Rs.{{product.price}}.00</p>
+
+		</div>
+		<div class="card-footer">
+			<a href="/products/buy/{{product.id}}" id = "buy-btn" class="btn" style="border-radius: 0.25rem; width: 100%; margin-bottom: 0.5rem;">More..</a>
+			{% if product.stock == 0 %}
+			<button onclick="cart({{product.id}}, 1)" class="btn" style="background-color: #198754; width: 100%; border-radius: 0.25rem;" disabled>Add to Cart (x1)</button>
+			{% else %}
+			<button onclick="cart({{product.id}}, 1)" class="btn" style="background-color: #198754; width: 100%; border-radius: 0.25rem;">Add to Cart (x1)</button>
+			{% endif %}
+		</div>
+	</div>
+</div>

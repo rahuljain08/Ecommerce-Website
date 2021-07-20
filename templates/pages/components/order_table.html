@@ -1,0 +1,36 @@
+<table class="table centered table-bordered">
+	<thead class="table-dark">
+		<th>#</th>
+		<th>Image</th>
+		<th>Item</th>
+		<th>Quantity</th>
+		<th>Total</th>
+		<th>Placed on</th>
+		<th>Status</th>
+		<th></th>
+	</thead>
+	<tbody>
+
+
+		{% for i, j in orders %}
+
+		<tr>
+			<td class="table-primary">{{i}}</td>
+			<td><img src="/media/{{j.product.image}}" width="100px"></td>
+			<td>{{j.product.company}} {{j.product}}</td>
+			<td>{{j.quantity}}</td>
+			<td>Rs. {{j.total_amount}}.00</td>
+			<td>{{j.placed_on}}</td>
+			{% if j.status == "Processing" %}
+				<td>{{j.status}}</td>
+				<td class="table-danger"><button class="btn" onclick="cancelOrder({{j.id}})">Cancel Order</button></td>
+			{% elif j.status == "Cancelled" %}
+				<td colspan="2" class="table-danger">Cancelled</td>
+			{% else %}
+				<td colspan="2" class="table-success">Shipped</td>
+			{% endif %}
+		</tr>
+
+		{% endfor %}
+	</tbody>
+</table>

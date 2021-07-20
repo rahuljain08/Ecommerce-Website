@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="width: 80%; margin: auto;">
+	<div class="row">
+		{% include "pages/components/add_alert.html" %}
+		{% for product in products %}
+			{% include "pages/components/product_card.html" %}
+		{% endfor %}	
+	</div>
+</div>
+
+{% endblock %}

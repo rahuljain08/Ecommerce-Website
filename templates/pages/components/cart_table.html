@@ -1,0 +1,43 @@
+<table class="table centered table-bordered">
+	<thead class="table-dark">
+		<th>#</th>
+		<th>Image</th>
+		<th>Item</th>
+		<th>Quantity</th>
+		<th>Price per Item</th>
+		<th>Total</th>
+		<th></th>
+		<th></th>
+	</thead>
+	<tbody>
+
+
+		{% for i, j in data %}
+		<tr>
+			<td class="table-primary">{{i}}</td>
+			<td><img src="/media/{{j.product.image}}" width="100px"></td>
+			<td>{{j.product.company}} {{j.product}}</td>
+			<td>{{j.quantity}}</td>
+			<td>Rs. {{j.price_per_item}}.00</td>
+			<td>Rs. {{j.total}}.00</td>
+			<form action="{% url 'payment' %}" method="POST">
+				{% csrf_token %}
+				<input name="key" type="number" value="{{j.id}}" hidden>
+				<td class="table-success"><button class="btn" type="submit" style="width: max-content;">Buy Now</button></td>
+			</form>
+			<td class="table-danger"><a class="btn" onclick="remove({{j.id}})">Remove</a></td>
+		</tr>
+
+		{% endfor %}
+
+		<tr>
+			<td colspan="5" class="table-success"><strong>Cart Total:</strong></td>
+			<td>Rs. {{total}}.00</td>
+			<form action="{% url 'payment' %}" method="POST">
+				{% csrf_token %}
+				<td class="table-success"><button class="btn" type="submit"><i class="material-icons right">play_arrow</i>Buy All</button></td>
+			</form>
+			<td class="table-danger"><button class="btn btn-danger" onclick="empty()"><i class="material-icons right">remove_shopping_cart</i>Empty Cart </button></td>
+		</tr>
+	</tbody>
+</table>

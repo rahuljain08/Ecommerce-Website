@@ -26,7 +26,7 @@ SECRET_KEY = '8*n1c@ui-he67i&@3lij=^-=p7skof8p$f*689%y5$$1^#_8b#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["ecomm-website.herokuapp.com", "localhost"]
 
 # PORT = 8080
 # Application definition

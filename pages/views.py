@@ -32,10 +32,10 @@ class All_Products(ListView):
 	template_name = "pages/show_products.html"
 
 
-class Specific_Product(LoginRequiredMixin, View):
+class Specific_Product(ListView):
 
-	def get_login_url(self):
-		return "/auth/login"
+	# def get_login_url(self):
+	# 	return "/auth/login"
 
 	def get(self, request, pk):
 		try:

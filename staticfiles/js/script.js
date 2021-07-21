@@ -57,9 +57,7 @@ function cart(productID, qty=null){
       "qty": qty,
     },
     ()=>{
-       
-      $(".add_alert").css("display", "table");
-      
+      $(".add_alert").css("display", "table"); 
     }
   )
 

@@ -10,11 +10,12 @@
 		</div>
 		<div class="card-footer">
 			<a href="/products/buy/{{product.id}}" id = "buy-btn" class="btn" style="border-radius: 0.25rem; width: 100%; margin-bottom: 0.5rem;">More..</a>
-			{% if product.stock == 0 %}
-			<button onclick="cart({{product.id}}, 1)" class="btn" style="background-color: #198754; width: 100%; border-radius: 0.25rem;" disabled>Add to Cart (x1)</button>
-			{% else %}
-			<button onclick="cart({{product.id}}, 1)" class="btn" style="background-color: #198754; width: 100%; border-radius: 0.25rem;">Add to Cart (x1)</button>
+
+			{% if user.is_authenticated %}
+			<button onclick="cart({{product.id}}, 1)" class="btn" style="background-color: #198754; width: 100%; border-radius: 0.25rem;" {% if product.stock == 0 %} disabled {% endif %}>Add to Cart (x1)</button>
 			{% endif %}
+			
+			
 		</div>
 	</div>
 </div>
